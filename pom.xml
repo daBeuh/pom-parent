@@ -2,24 +2,52 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-  	<parent>
-    	<groupId>org.springframework.boot</groupId>
-    	<artifactId>spring-boot-starter-parent</artifactId>
-    	<version>1.2.4.RELEASE</version>
-	</parent>
-
-	<groupId>da.beuh</groupId>
+	<groupId>org.da.beuh</groupId>
 	<artifactId>parent</artifactId>
 	<version>0.0</version>
 	<packaging>pom</packaging>
+	<name>parent</name>
+	<description>da beuh's parent pom</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<java.version>1.8</java.version>
 
+		<rxjava.version>1.0.12</rxjava.version>
+		
+		<spring-boot.version>1.2.4.RELEASE</spring-boot.version>
 		<spring.version>4.1.6.RELEASE</spring.version>
-
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+		
+			<dependency>
+				<groupId>io.reactivex</groupId>
+				<artifactId>rxjava</artifactId>
+				<version>${rxjava.version}</version>
+			</dependency>
+			
+			<dependency>
+	            <!-- Import dependency management from Spring Boot -->
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-dependencies</artifactId>
+	            <version>${spring-boot.version}</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	        </plugin>
+	    </plugins>
+	</build>
 
 </project>
